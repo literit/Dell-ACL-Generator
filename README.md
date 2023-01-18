@@ -16,6 +16,15 @@ Define Variable2
   Value1
   Value2
 ```
+Example:
+```
+Define BGP_FROM
+  host 255.255.254
+  host 255.255.255
+Define BGP_TO
+  host 254.254.254
+  host 254.254.255
+```
 
 ## Template File Syntax
 ```
@@ -25,3 +34,15 @@ It can also do two variables in one line, in which case it outputs all possible 
 ```
 Line before variable {Variable1} {Variable2} Line after variable
 ```
+
+Example:
+```
+permit tcp {BGP_FROM} eq 179 {BGP_TO}
+```
+This will output, if used with the above example, the following lines:
+```
+permit tcp host 255.255.254 eq 179 host 254.254.254
+permit tcp host 255.255.254 eq 179 host 254.254.255
+permit tcp host 255.255.255 eq 179 host 254.254.254
+permit tcp host 255.255.255 eq 179 host 254.254.255
+
