@@ -29,19 +29,6 @@ def varlist(input):
         elif state == 1:
             variables[name].append(x)
     return variables
-# create a dictionary of variables
-variables = {}
-state = 0
-for x in input1:
-    if x == "":
-        state = 0
-    elif state == 0:
-        if x.startswith("define "):
-            name = x.split("define ")[1]
-            state = 1
-            variables[name] = []
-    elif state == 1:
-        variables[name].append(x)
 
 # go through every line in input2 that has a bracket in it. Then go through every variable and see if it is in the line. If it is, print line with the variable replacing the bracketed text
 def createoutput(variables, template):
