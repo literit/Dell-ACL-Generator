@@ -2,7 +2,7 @@
 import argparse
 
 parser = argparse.ArgumentParser(description='Turns a a definition file and a template file into settings')
-parser.add_argument('def', metavar='def', type=str, help='The definition file')
+parser.add_argument('defines', metavar='defines', type=str, help='The definition file')
 parser.add_argument('template', metavar='template', type=str, help='The template file')
 parser.add_argument('output', metavar='output', type=str, help='The output file')
 args = parser.parse_args()
@@ -30,7 +30,7 @@ def varlist(input):
             variables[name].append(x)
     return variables
 
-# go through every line in input2 that has a bracket in it. Then go through every variable and see if it is in the line. If it is, print line with the variable replacing the bracketed text
+# go through every line in template that has a bracket in it. Then go through every variable and see if it is in the line. If it is, print line with the variable replacing the bracketed text
 def createoutput(variables, template):
     output = []
     for x in template:
@@ -63,7 +63,7 @@ def outputfile(output, file):
     fileoutput.close()
 
 if __name__ == "__main__":
-    defines = filetolist(args.def)
+    defines = filetolist(args.defines)
     template = filetolist(args.template)
     variables = varlist(defines)
     output = createoutput(variables, template)
