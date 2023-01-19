@@ -2,8 +2,8 @@
 import argparse
 
 parser = argparse.ArgumentParser(description='Turns a a definition file and a template file into settings')
-parser.add_argument('input1', metavar='input1', type=str, help='The definition file')
-parser.add_argument('input2', metavar='input2', type=str, help='The template file')
+parser.add_argument('def', metavar='def', type=str, help='The definition file')
+parser.add_argument('template', metavar='template', type=str, help='The template file')
 parser.add_argument('output', metavar='output', type=str, help='The output file')
 args = parser.parse_args()
 
@@ -63,8 +63,8 @@ def outputfile(output, file):
     fileoutput.close()
 
 if __name__ == "__main__":
-    input1 = filetolist(args.input1)
-    input2 = filetolist(args.input2)
-    variables = varlist(input1)
-    output = createoutput(variables, input2)
+    defines = filetolist(args.def)
+    template = filetolist(args.template)
+    variables = varlist(defines)
+    output = createoutput(variables, template)
     outputfile(output, args.output)
