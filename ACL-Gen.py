@@ -26,6 +26,10 @@ def varlist(input):
                 name = x.split("define ")[1]
                 state = 1
                 variables[name] = []
+            elif x.startswith("Define "):
+                name = x.split("Define ")[1]
+                state = 1
+                variables[name] = []
         elif state == 1:
             variables[name].append(x)
     return variables
