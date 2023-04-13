@@ -8,19 +8,23 @@ There are 3 arguments, in this order:
 3. Output file location
 
 ## Variable File Syntax
+It is important to have the empty line inbetween the last variable value and the next define statement
 ```
 Define Variable1
   Value1
   Value2
+
 Define Variable2
   Value1
   Value2
 ```
+
 Example:
 ```
 Define BGP_FROM
   host 255.255.254
   host 255.255.255
+
 Define BGP_TO
   host 254.254.254
   host 254.254.255
