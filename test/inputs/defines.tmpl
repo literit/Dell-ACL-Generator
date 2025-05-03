@@ -1,0 +1,9 @@
+Value Filldown DefineName (\w+)
+Value List DefineValue (.+)
+
+Start
+  ^Define\s+${DefineName} -> Body
+
+Body
+  ^\s+${DefineValue} -> Body
+  ^\s* -> Record Start

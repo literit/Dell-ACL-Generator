@@ -1,0 +1,2 @@
+input {var1} output {var2}
+output {var2} input {var1}
